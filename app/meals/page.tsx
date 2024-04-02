@@ -1,7 +1,10 @@
 import Link from "next/link";
 import MealGrids from "@/components/meals/MealsGrid";
+import { getMeals } from "@/lib/meals";
 
-export default function MealsPage() {
+export default async function MealsPage() {
+  const meals = await getMeals();
+
   return (
     <>
       <header>
@@ -12,7 +15,7 @@ export default function MealsPage() {
         </Link>
       </header>
       <main>
-        <MealGrids meals={[]} />
+        <MealGrids meals={meals} />
       </main>
     </>
   );
