@@ -1,10 +1,14 @@
 import Link from "next/link";
 import MealGrids from "@/components/meals/MealsGrid";
 import { getMeals } from "@/lib/meals";
+import { Suspense } from "react";
+
+async function Meals() {
+  const meals = await getMeals();
+  return <MealGrids meals={meals} />;
+}
 
 export default async function MealsPage() {
-  const meals = await getMeals();
-
   return (
     <>
       <header>
@@ -15,7 +19,9 @@ export default async function MealsPage() {
         </Link>
       </header>
       <main>
-        <MealGrids meals={meals} />
+        <Suspense fallback={<p>Fetching Data please wait</p>}>
+          <Meals />
+        </Suspense>
       </main>
     </>
   );
