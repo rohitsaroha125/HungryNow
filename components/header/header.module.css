@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+}
+
+.navList li {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.navList li a {
+  color: #fff;
+  text-decoration: none;
+}
