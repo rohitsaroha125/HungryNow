@@ -1,4 +1,5 @@
 "use server";
+import { revalidatePath } from "next/cache";
 import { saveMeal } from "./meals";
 import { redirect } from "next/navigation";
 
@@ -14,6 +15,7 @@ export async function shareMeal(formData: any) {
 
   const data = await saveMeal(meal);
   if (data) {
+    revalidatePath("/meals");
     redirect("/meals");
   } else {
     throw new Error("Some Error Occured");

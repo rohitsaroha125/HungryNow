@@ -2,11 +2,8 @@ import classes from "./page.module.css";
 import ImagePicker from "@/components/imagePicker/imagePicker";
 import { shareMeal } from "@/lib/actions";
 import MealFormButton from "@/components/mealFormButton/mealFormButton";
-import { useFormState } from "react-dom";
 
 export default function ShareMealPage() {
-  const [] = useFormState(shareMeal, {message: null});
-
   return (
     <>
       <header className={classes.header}>
