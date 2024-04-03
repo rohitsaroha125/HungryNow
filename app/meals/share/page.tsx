@@ -1,21 +1,11 @@
 import classes from "./page.module.css";
 import ImagePicker from "@/components/imagePicker/imagePicker";
+import { shareMeal } from "@/lib/actions";
+import MealFormButton from "@/components/mealFormButton/mealFormButton";
+import { useFormState } from "react-dom";
 
 export default function ShareMealPage() {
-  async function shareMeal(formData: any) {
-    "use server";
-
-    const meal = {
-      title: formData.get("title"),
-      creator: formData.get("name"),
-      creator_email: formData.get("email"),
-      summary: formData.get("summary"),
-      instructions: formData.get("instructions"),
-      image: formData.get("image"),
-    };
-
-    console.log("Meal is ", meal);
-  }
+  const [] = useFormState(shareMeal, {message: null});
 
   return (
     <>
@@ -56,7 +46,7 @@ export default function ShareMealPage() {
           </p>
           <ImagePicker label="Select Image" />
           <p className={classes.actions}>
-            <button type="submit">Share Meal</button>
+            <MealFormButton />
           </p>
         </form>
       </main>
